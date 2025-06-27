@@ -3,5 +3,6 @@
     <NuxtLink to="/">Home</NuxtLink>
     <NuxtLink to="/posts">Posts</NuxtLink>
     <NuxtLink to="/posts/1">Posts 1</NuxtLink>
+    <NuxtLink to="/about">About</NuxtLink>
   </nav>
 </template>
