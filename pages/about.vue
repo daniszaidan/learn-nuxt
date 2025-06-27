@@ -1,4 +1,7 @@
 <template>
+  <Title>About</Title>
+  <Meta name="description" content="description" />
+
   <p>About Page</p>
 
   <Card class="mt-5">
