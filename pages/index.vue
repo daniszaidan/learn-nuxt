@@ -10,4 +10,7 @@
     <template #heading>Card Heading</template>
     <p>This is an auto-imported component</p>
   </Card>
+
+  <!-- <BaseFooButton class="mt-5" /> -->
+  <LazyBaseFooButton class="mt-5" />
 </template>
