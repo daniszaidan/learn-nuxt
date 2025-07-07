@@ -13,4 +13,29 @@
 
   <!-- <BaseFooButton class="mt-5" /> -->
   <LazyBaseFooButton class="mt-5" />
+
+  <div v-show="!posts?.length">error</div>
+  <li v-for="item in posts" :key="item?.id">
+    <!-- <NuxtLink to="{{ `/posts/${item?.id}` }}">{{ item?.title }}</NuxtLink> -->
+    {{ item?.title }}
+  </li>
 </template>
+
+<script setup>
+// const { data: posts } = await useAsyncData('post', () =>
+//   $fetch('https://jsonplaceholder.typicode.com/posts')
+// );
+
+const { data: posts } = await useFetch(
+  () => 'https://jsonplaceholder.typicode.com/posts'
+);
+
+const { data: post1 } = await useFetch(
+  () => 'https://jsonplaceholder.typicode.com/posts/1',
+  {
+    pick: ['id', 'title'],
+  }
+);
+
+console.log('ssr post1', toRaw(post1.value));
+</script>
