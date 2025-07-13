@@ -5,26 +5,13 @@
 </template>
 
 <script setup lang="ts">
-if (import.meta.server) {
-  // These meta tags will only be added during server-side rendering
-  useSeoMeta({
-    robots: 'index, follow',
-    description: 'Static description that does not need reactivity',
-    ogImage: 'https://example.com/image.png',
-    // other static meta tags...
-  });
-}
+import { useSeo } from '~/composables/useSeo';
 
-const dynamicTitle = ref('My App');
-// Only use reactive meta tags outside the condition when necessary
-useSeoMeta({
-  // title: () => `${dynamicTitle.value} Page`,
-  titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - Site Title` : 'Site Title';
-  },
-  ogTitle: () => dynamicTitle.value,
-});
+// Set default SEO for the application
+const { setDefaultSeo } = useSeo();
+setDefaultSeo();
 
+// Global head configuration
 useHead({
   link: [
     {
@@ -33,9 +20,15 @@ useHead({
     },
     {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
       crossorigin: '',
     },
   ],
+  htmlAttrs: {
+    lang: 'en',
+  },
+  bodyAttrs: {
+    class: 'antialiased bg-gray-50',
+  },
 });
 </script>
